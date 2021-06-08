@@ -19,6 +19,7 @@
 
 
 
+
     <TextView
         android:id="@+id/videoAwemeCountTextView"
         android:layout_width="wrap_content"
