@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/head_profile_image" />
+
+        <fragment
+            android:id="@+id/avatarEditInfoAddFriendFragment"
+            android:name="zy.douyinpersonalpage.fragment.AvatarEditInfoAddFriendFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <fragment
+            android:id="@+id/personalInformationFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="zy.douyinpersonalpage.fragment.PersonalInformationFragment"/>
+
+        <fragment
+            android:id="@+id/threeTextViewButtonFragment"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:name="zy.douyinpersonalpage.fragment.ThreeTextViewButtonFragment" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/yellowBarOne"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/yellow"/>
+            <TextView
+                android:id="@+id/yellowBarTwo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/background"/>
+            <TextView
+                android:id="@+id/yellowBarThree"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/background"/>
+        </LinearLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/bottomViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/background"/>
+    </LinearLayout>
+</ScrollView>
