@@ -10,14 +10,24 @@
         android:background="@color/background"
         android:scaleType="fitXY"/>
 
+    <ImageView
+        android:layout_width="13.5dp"
+        android:layout_height="12dp"
+        android:layout_marginTop="147.5dp"
+        android:layout_marginLeft="11dp"
+        android:src="@drawable/heart_icon" />
+
+
+
     <TextView
         android:id="@+id/videoAwemeCountTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_marginLeft="10dp"
+        android:layout_height="12dp"
+        android:layout_marginTop="147.5dp"
+        android:layout_marginLeft="20dp"
         android:text="21.7w"
         android:textColor="@color/white"
+        android:gravity="center_vertical"
         android:textSize="10sp" />
 
 </FrameLayout>
