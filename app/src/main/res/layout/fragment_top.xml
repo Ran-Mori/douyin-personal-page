@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".fragment.TopFragment">
+
+    <!--最上层的个人背景-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="146dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-24dp"
+        android:background="@drawable/head_profile_image" />
+
+    <!--三条横杠和一个黄点-->
+    <View
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="327dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/message_hint"/>
+
+    <!--个人的头像-->
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="94dp"
+        android:layout_height="94dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="109dp"
+        android:background="@drawable/avatar"/>
+
+    <!--编辑资料和加好友三个按钮-->
+    <View
+        android:layout_width="229dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="130dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/editinfo_addfriend"/>
+
+    <!--个人昵称-->
+    <TextView
+        android:layout_width="137dp"
+        android:layout_height="34dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="215dp"
+        android:textSize="24sp"
+        android:textColor="#E6FFFFFF"
+        android:text="中国日报"
+        android:gravity="top" />
+
+    <!--抖音号-->
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="17dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="12dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="253dp"
+        android:textColor="#E6FFFFFF"
+        android:text="抖音号:123456789"
+        android:gravity="top"/>
+
+
+    <!--一条横杠，用作区分，但看起来不明显-->
+    <View
+        android:layout_width="343dp"
+        android:layout_height="0.5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="282.5dp"
+        android:background="#1FFFFFFF"/>
+
+
+    <!--提示还没有填写个人简介-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="21dp"
+        android:textSize="15sp"
+        android:layout_marginLeft="12dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="295dp"
+        android:text="你还没有填写个人简介，点击添加"
+        android:textColor="#E6FFFFFF"
+        android:gravity="top"/>
+
+
+    <!--提示增加年龄、位置、学校等标签-->
+    <View
+        android:layout_width="180dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="12dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="328dp"
+        android:background="@drawable/add_age_location_hint"/>
+
+
+    <!--获赞数  关注数  粉丝数-->
+    <LinearLayout
+        android:layout_width="223dp"
+        android:layout_height="24dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="12dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="360dp"
+        android:orientation="horizontal">
+
+        <!--获赞数-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="top"
+            android:text="0"
+            android:textColor="#E6FFFFFF"
+            android:textSize="17sp"
+            android:id="@+id/awemeCountTextView"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginLeft="5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="top"
+            android:textSize="15sp"
+            android:textColor="#80FFFFFF"
+            android:text="获赞"/>
+
+
+        <!--关注数-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="top"
+            android:textColor="#E6FFFFFF"
+            android:textSize="17sp"
+            android:id="@+id/followingCountTextView"
+            android:text="4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginLeft="5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="top"
+            android:textSize="15sp"
+            android:textColor="#80FFFFFF"
+            android:text="关注"/>
+
+
+        <!--粉丝数-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="top"
+            android:textColor="#E6FFFFFF"
+            android:textSize="17sp"
+            android:id="@+id/followerCountTextView"
+            android:text="12.1w"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginLeft="5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="top"
+            android:textSize="15sp"
+            android:textColor="#80FFFFFF"
+            android:text="粉丝"/>
+
+    </LinearLayout>
+
+</FrameLayout>

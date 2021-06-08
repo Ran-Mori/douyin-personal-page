@@ -5,7 +5,7 @@
     android:orientation="horizontal">
 
     <TextView
-        android:id="@+id/productTextView"
+        android:id="@+id/postTextView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:text="作品"
@@ -21,7 +21,7 @@
         android:layout_weight="1" />
 
     <TextView
-        android:id="@+id/likeTextView"
+        android:id="@+id/favoriteTextView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:text="喜欢"

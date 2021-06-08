@@ -8,8 +8,7 @@
         android:layout_width="124dp"
         android:layout_height="168dp"
         android:background="@color/background"
-        android:scaleType="fitXY"
-        android:src="@mipmap/izumisakai"/>
+        android:scaleType="fitXY"/>
 
     <TextView
         android:id="@+id/videoAwemeCountTextView"

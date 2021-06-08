@@ -12,9 +12,9 @@ import zy.douyinpersonalpage.model.UserProfileResponse
 import zy.douyinpersonalpage.retrofitservice.impl.UserProfileService
 
 /**
- * PersonalInformationFragment对应的ViewModel
+ * TopFragment对应的ViewModel
  */
-class PersonalInformationFragmentViewModel(val inputUserProfile: UserProfile?):ViewModel() {
+class TopFragmentViewModel(val inputUserProfile: UserProfile?):ViewModel() {
     /**
      * 固定模式，一个'_name'的MutableLiveData，一个'name'的LiveData
      */

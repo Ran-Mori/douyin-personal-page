@@ -47,7 +47,7 @@
 >           Fresco.initialize(this);
 >       }
 >   }
->   
+>     
 >   class MyApplication:Application() {
 >       override fun onCreate() {
 >           super.onCreate()
@@ -322,7 +322,7 @@
 >       @SerializedName("user")
 >       val userProfile:UserProfile
 >   )
->   
+>     
 >   data class UserProfile(
 >       @SerializedName("nickname")
 >       var nickName:String,//昵称
@@ -350,7 +350,7 @@
 >    * 个人信息获取的Retrofit Service
 >    */
 >   interface IUserProfileService {
->   
+>     
 >       /**
 >        * 会自动做url拼接，且'UserProfileResponse'会自动解析封装
 >        */
@@ -376,7 +376,7 @@
 >        * 此语句会在运行时动态生成一个实现类
 >        */
 >       private val service = MySingleTon.getRetrofit().create(IUserProfileService::class.java)
->   
+>     
 >       fun getUserProfile():Observable<UserProfileResponse> = service.getUserProfile()
 >   }
 >   ```
@@ -394,7 +394,7 @@
 >               .subscribe(object : Observer<UserProfileResponse> {
 >                   override fun onSubscribe(d: Disposable) {
 >                   }
->   
+>     
 >                   override fun onNext(t: UserProfileResponse) {
 >                       /**
 >                        * 对'_name'进行一次赋值操作，不然观察者感知不到
@@ -402,10 +402,10 @@
 >                       val userProfile = t.userProfile
 >                       _userProfile.value = userProfile
 >                   }
->   
+>     
 >                   override fun onError(e: Throwable) {
 >                   }
->   
+>     
 >                   override fun onComplete() {
 >                   }
 >               })
@@ -433,6 +433,82 @@
 > * 这里还有一个点要注意。返回的`ResponseBody`是一个流，只能读取一次，二次读取会读不到任何内容。因此建议使用一个变量把内容暂时保存起来
 >
 > * 至于json的解析就是原来的老内容了，可以使用`JSONObject`来直接解析
+>
+> ***
+
+## ViewModel使用
+
+> ### ViewModel
+>
+> * ```kotlin
+>   class PostFragmentViewModel(list: MutableList<Video>?): ViewModel() {
+>   		
+>       private var _videoList = MutableLiveData<MutableList<Video>>()
+>   
+>       val videoList: LiveData<MutableList<Video>>
+>           get() = _videoList
+>   
+>   
+>       /**
+>        * 初始化时如果为空就拉取最新
+>        */
+>       init {
+>           if (list != null){
+>               _videoList.value = list
+>           }else{
+>               getVideoList()
+>           }
+>       }
+>      fun getVideoList(){
+>        //...
+>      }
+>   }
+>   ```
+>
+> ### ViewModelFactory
+>
+> * ```kotlin
+>   /**
+>    * 工厂获得ViewModel，适用于有参数的ViewModel
+>    */
+>   class PostFragmentViewModelFactory(private val list: MutableList<Video>?):ViewModelProvider.Factory {
+>       override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+>           return PostFragmentViewModel(list) as T
+>       }
+>   }
+>   ```
+>
+> ### 获取实例并使用
+>
+> * ```kotlin
+>   class PostFragment : Fragment() {
+>   
+>       private lateinit var viewModel: PostFragmentViewModel
+>   
+>       /**
+>        * ViewModel尽量早初始化，放在OnAttach里面
+>        */
+>       override fun onAttach(context: Context) {
+>           super.onAttach(context)
+>           viewModel = ViewModelProvider(this, PostFragmentViewModelFactory(null)).get(PostFragmentViewModel::class.java)
+>       }
+>   
+>   
+>       override fun onCreateView(
+>           inflater: LayoutInflater, container: ViewGroup?,
+>           savedInstanceState: Bundle?
+>       ): View? {
+>           /**
+>            * 建立观察
+>            */
+>           viewModel.videoList.observe(viewLifecycleOwner) {
+>               adapter.list = it
+>               adapter.notifyDataSetChanged()
+>           }
+>   				//...
+>       }
+>   }
+>   ```
 >
 > ***
 
@@ -469,7 +545,7 @@
 >     */
 >   val adapter = VideoAdapter(ArrayList<Video>())
 >   recyclerView.adapter = adapter
->   
+>     
 >   /**
 >     * 建立观察
 >     */
@@ -481,3 +557,33 @@
 >
 > ***
 
+## 同一个Activity不同Fragment通信
+
+> ### 思路
+>
+> * 不能直接通信，通过公共的`activity`作中介来通信
+>
+> ### 示例
+>
+> * ```kotlin
+>   class ThreeTextViewButtonFragment:Fragment() {
+>       override fun onCreateView(
+>           inflater: LayoutInflater,
+>           container: ViewGroup?,
+>           savedInstanceState: Bundle?
+>       ): View? {
+>           val view = inflater.inflate(R.layout.three_textview_button,container,false)
+>           /**
+>            * 同一个Activity不同的Fragment之间进行通信
+>            */
+>           view.findViewById<TextView>(R.id.postTextView).setOnClickListener {
+>               activity?.bottomViewPager?.setCurrentItem(0,true)
+>           }
+>           return view
+>       }
+>   }
+>   ```
+>
+> * 上述代码的activity中有两个fragment，分别是`ThreeTextViewButtonFragment`和`BottomViewPager`
+>
+> * 现在通过`activity?.bottomViewPager?.setCurrentItem(0,true)`来进行两者之间的通信

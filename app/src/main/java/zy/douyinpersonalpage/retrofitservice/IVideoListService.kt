@@ -13,5 +13,9 @@ interface  IVideoListService {
      * 此处定义的返回值是ResponseBody，后面会自定义json解析
      */
     @GET("post")
-    fun getVideoList():Observable<ResponseBody>
+    fun getPostVideoList():Observable<ResponseBody>
+
+
+    @GET("favorite")
+    fun getFavoriteVideoList():Observable<ResponseBody>
 }

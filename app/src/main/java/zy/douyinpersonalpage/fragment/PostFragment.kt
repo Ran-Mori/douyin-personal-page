@@ -13,7 +13,7 @@ import zy.douyinpersonalpage.R
 import zy.douyinpersonalpage.adapter.VideoAdapter
 import zy.douyinpersonalpage.model.Video
 import zy.douyinpersonalpage.viewmodel.PostFragmentViewModel
-import zy.douyinpersonalpage.viewmodel.factory.WorksFragmentViewModelFactory
+import zy.douyinpersonalpage.viewmodel.factory.PostFragmentViewModelFactory
 
 
 /**
@@ -28,7 +28,7 @@ class PostFragment : Fragment() {
      */
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        viewModel = ViewModelProvider(this, WorksFragmentViewModelFactory(null)).get(PostFragmentViewModel::class.java)
+        viewModel = ViewModelProvider(this, PostFragmentViewModelFactory(null)).get(PostFragmentViewModel::class.java)
     }
 
 

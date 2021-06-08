@@ -12,5 +12,7 @@ object VideoListService {
      */
     private val service = MySingleTon.getRetrofit().create(IVideoListService::class.java)
 
-    fun getVideoList() = service.getVideoList()
+    fun getPostVideoList() = service.getPostVideoList()
+
+    fun getFavoriteVideoList() = service.getFavoriteVideoList()
 }

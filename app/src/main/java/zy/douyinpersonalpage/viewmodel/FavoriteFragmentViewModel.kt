@@ -1,6 +1,6 @@
 package zy.douyinpersonalpage.viewmodel
 
-
+import android.provider.MediaStore
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,24 +14,14 @@ import org.json.JSONObject
 import zy.douyinpersonalpage.model.Video
 import zy.douyinpersonalpage.retrofitservice.impl.VideoListService
 
-/**
- * 作品页面的ViewModel
- */
-class PostFragmentViewModel(list: MutableList<Video>?): ViewModel() {
-
+class FavoriteFragmentViewModel(var list: MutableList<Video>?):ViewModel() {
     private var _videoList = MutableLiveData<MutableList<Video>>()
 
-    val videoList: LiveData<MutableList<Video>>
+    val videoList:LiveData<MutableList<Video>>
         get() = _videoList
 
-
-    /**
-     * 初始化时如果为空就拉取最新
-     */
     init {
-        if (list != null){
-            _videoList.value = list
-        }else{
+        if (list == null){
             getVideoList()
         }
     }
@@ -40,7 +30,7 @@ class PostFragmentViewModel(list: MutableList<Video>?): ViewModel() {
      * 通过网络请求更新数据
      */
     fun getVideoList(){
-        VideoListService.getPostVideoList()
+        VideoListService.getFavoriteVideoList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : Observer<ResponseBody> {
@@ -104,5 +94,4 @@ class PostFragmentViewModel(list: MutableList<Video>?): ViewModel() {
     fun resetVideoList(list: MutableList<Video>){
         _videoList.value = list
     }
-
 }
