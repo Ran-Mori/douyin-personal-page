@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!--此处设置了它要进行滚动scoll响应，即layout_scrollFlags-->
         <fragment
             android:id="@+id/topFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|enterAlways"
             android:name="zy.douyinpersonalpage.fragment.TopFragment"/>
 
         <fragment
@@ -48,11 +52,13 @@
                 android:background="@color/background"/>
         </LinearLayout>
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/bottomViewPager"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@color/background"/>
-    </LinearLayout>
-</ScrollView>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--此处设置了这个viewpager2的事件，既layout_behavior-->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/bottomViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@color/background"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
