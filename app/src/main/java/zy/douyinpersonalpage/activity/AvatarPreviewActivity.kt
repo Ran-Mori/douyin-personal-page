@@ -16,7 +16,6 @@ class AvatarPreviewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_avatar_preview)
 
-
         /**
          * 隐藏最上面的action bar
          */

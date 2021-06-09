@@ -47,7 +47,7 @@
 >           Fresco.initialize(this);
 >       }
 >   }
->     
+>       
 >   class MyApplication:Application() {
 >       override fun onCreate() {
 >           super.onCreate()
@@ -322,7 +322,7 @@
 >       @SerializedName("user")
 >       val userProfile:UserProfile
 >   )
->     
+>       
 >   data class UserProfile(
 >       @SerializedName("nickname")
 >       var nickName:String,//昵称
@@ -350,7 +350,7 @@
 >    * 个人信息获取的Retrofit Service
 >    */
 >   interface IUserProfileService {
->     
+>       
 >       /**
 >        * 会自动做url拼接，且'UserProfileResponse'会自动解析封装
 >        */
@@ -376,7 +376,7 @@
 >        * 此语句会在运行时动态生成一个实现类
 >        */
 >       private val service = MySingleTon.getRetrofit().create(IUserProfileService::class.java)
->     
+>       
 >       fun getUserProfile():Observable<UserProfileResponse> = service.getUserProfile()
 >   }
 >   ```
@@ -394,7 +394,7 @@
 >               .subscribe(object : Observer<UserProfileResponse> {
 >                   override fun onSubscribe(d: Disposable) {
 >                   }
->     
+>       
 >                   override fun onNext(t: UserProfileResponse) {
 >                       /**
 >                        * 对'_name'进行一次赋值操作，不然观察者感知不到
@@ -402,10 +402,10 @@
 >                       val userProfile = t.userProfile
 >                       _userProfile.value = userProfile
 >                   }
->     
+>       
 >                   override fun onError(e: Throwable) {
 >                   }
->     
+>       
 >                   override fun onComplete() {
 >                   }
 >               })
@@ -442,9 +442,9 @@
 >
 > * ```kotlin
 >   class PostFragmentViewModel(list: MutableList<Video>?): ViewModel() {
->   		
+>   		  
 >       private var _videoList = MutableLiveData<MutableList<Video>>()
->   
+>     
 >       val videoList: LiveData<MutableList<Video>>
 >           get() = _videoList
 >   
@@ -482,9 +482,9 @@
 >
 > * ```kotlin
 >   class PostFragment : Fragment() {
->   
+>     
 >       private lateinit var viewModel: PostFragmentViewModel
->   
+>     
 >       /**
 >        * ViewModel尽量早初始化，放在OnAttach里面
 >        */
@@ -505,7 +505,7 @@
 >               adapter.list = it
 >               adapter.notifyDataSetChanged()
 >           }
->   				//...
+>     			//...
 >       }
 >   }
 >   ```
@@ -545,7 +545,7 @@
 >     */
 >   val adapter = VideoAdapter(ArrayList<Video>())
 >   recyclerView.adapter = adapter
->     
+>       
 >   /**
 >     * 建立观察
 >     */
@@ -587,3 +587,48 @@
 > * 上述代码的activity中有两个fragment，分别是`ThreeTextViewButtonFragment`和`BottomViewPager`
 >
 > * 现在通过`activity?.bottomViewPager?.setCurrentItem(0,true)`来进行两者之间的通信
+>
+> ***
+
+## CoordinateLayout
+
+> ### 代码
+>
+> ```xml
+> <androidx.coordinatorlayout.widget.CoordinatorLayout
+>     android:layout_width="match_parent"
+>     android:layout_height="match_parent"
+>     android:orientation="vertical"
+>     tools:context=".activity.MainActivity">
+> 
+>     <com.google.android.material.appbar.AppBarLayout
+>         android:layout_width="match_parent"
+>         android:layout_height="wrap_content"
+>         android:orientation="vertical">
+> 				<!--此处设置了它要进行滚动scoll响应，即layout_scrollFlags-->
+>         <fragment
+>             android:id="@+id/topFragment"
+>             android:layout_width="match_parent"
+>             android:layout_height="wrap_content"
+>             app:layout_scrollFlags="scroll|enterAlways"
+>             android:name="zy.douyinpersonalpage.fragment.TopFragment"/>
+> 
+>     </com.google.android.material.appbar.AppBarLayout>
+> 
+>   <!--此处设置了这个viewpager2的事件，既layout_behavior-->
+>     <androidx.viewpager2.widget.ViewPager2
+>         android:id="@+id/bottomViewPager"
+>         android:layout_width="match_parent"
+>         android:layout_height="match_parent"
+>         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+>         android:background="@color/background"/>
+> </androidx.coordinatorlayout.widget.CoordinatorLayout>
+> ```
+>
+> ### 效果
+>
+> * 设置后`TopFragment`会响应`ViewPager2`的滑动事件，会跟随一起滚动
+> * 二没有设置跟随滑动的控件最后就会停留在顶部，达到最后的目的
+>
+> ***
+

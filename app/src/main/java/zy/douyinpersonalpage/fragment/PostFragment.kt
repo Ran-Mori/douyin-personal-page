@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import kotlinx.android.synthetic.main.fragment_post.*
+import kotlinx.android.synthetic.main.three_textview_button.*
 import zy.douyinpersonalpage.R
 import zy.douyinpersonalpage.adapter.VideoAdapter
 import zy.douyinpersonalpage.model.Video
@@ -67,6 +69,18 @@ class PostFragment : Fragment() {
             Log.d("MainActivity","postcount = ${it.size}")
         }
 
+        /**
+         * 设置滚动相关的内容
+         */
+
         return view
+    }
+
+    /**
+     * 防止因为网络原因导致不进行再次获取数据
+     */
+    override fun onResume() {
+        super.onResume()
+        viewModel.getVideoList()
     }
 }

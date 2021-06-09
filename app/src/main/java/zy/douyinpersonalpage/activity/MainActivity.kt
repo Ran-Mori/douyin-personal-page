@@ -49,5 +49,9 @@ class MainActivity : AppCompatActivity() {
                 yellowBarTwo.background = resources.getDrawable(R.color.background,null)
             }
         }
+
+        /**
+         * 设置viewPager2的滑动事件，防止网络断开结果没有重新加载
+         */
     }
 }

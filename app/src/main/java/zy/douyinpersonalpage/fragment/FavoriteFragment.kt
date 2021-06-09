@@ -58,4 +58,12 @@ class FavoriteFragment : Fragment() {
 
         return view
     }
+
+    /**
+     * 防止因为网络原因导致不进行再次获取数据
+     */
+    override fun onResume() {
+        super.onResume()
+        viewModel.getVideoList()
+    }
 }
