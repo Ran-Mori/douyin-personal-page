@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.TopFragment">
 
     <!--最上层的个人背景-->
@@ -19,20 +20,21 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="327dp"
+        android:layout_marginLeft="310dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="26dp"
         android:background="@drawable/message_hint"/>
 
     <!--个人的头像-->
     <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/avatarSimpleDraweeView"
+        app:roundedCornerRadius="50dp"
         android:layout_width="94dp"
         android:layout_height="94dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="16dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="109dp"
-        android:background="@drawable/avatar"/>
+        android:layout_marginTop="109dp"/>
 
     <!--编辑资料和加好友三个按钮-->
     <View
@@ -46,6 +48,7 @@
 
     <!--个人昵称-->
     <TextView
+        android:id="@+id/nickNameTextView"
         android:layout_width="137dp"
         android:layout_height="34dp"
         android:layout_alignParentLeft="true"
@@ -59,6 +62,7 @@
 
     <!--抖音号-->
     <TextView
+        android:id="@+id/uidTextView"
         android:layout_width="200dp"
         android:layout_height="17dp"
         android:layout_alignParentLeft="true"
@@ -66,7 +70,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="253dp"
         android:textColor="#E6FFFFFF"
-        android:text="抖音号:123456789"
+        android:text="抖音号:"
         android:gravity="top"/>
 
 
@@ -83,6 +87,7 @@
 
     <!--提示还没有填写个人简介-->
     <TextView
+        android:id="@+id/signatureTextView"
         android:layout_width="match_parent"
         android:layout_height="21dp"
         android:textSize="15sp"
@@ -109,7 +114,7 @@
 
     <!--获赞数  关注数  粉丝数-->
     <LinearLayout
-        android:layout_width="223dp"
+        android:layout_width="wrap_content"
         android:layout_height="24dp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="12dp"
@@ -119,6 +124,7 @@
 
         <!--获赞数-->
         <TextView
+            android:id="@+id/awemeCountTextView"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:layout_alignParentLeft="true"
@@ -127,8 +133,7 @@
             android:gravity="top"
             android:text="0"
             android:textColor="#E6FFFFFF"
-            android:textSize="17sp"
-            android:id="@+id/awemeCountTextView"/>
+            android:textSize="17sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -145,6 +150,7 @@
 
         <!--关注数-->
         <TextView
+            android:id="@+id/followingCountTextView"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:layout_marginLeft="10dp"
@@ -154,8 +160,7 @@
             android:gravity="top"
             android:textColor="#E6FFFFFF"
             android:textSize="17sp"
-            android:id="@+id/followingCountTextView"
-            android:text="4" />
+            android:text="0" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -172,6 +177,7 @@
 
         <!--粉丝数-->
         <TextView
+            android:id="@+id/followerCountTextView"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
             android:layout_marginLeft="10dp"
@@ -181,8 +187,7 @@
             android:gravity="top"
             android:textColor="#E6FFFFFF"
             android:textSize="17sp"
-            android:id="@+id/followerCountTextView"
-            android:text="12.1w"/>
+            android:text="0"/>
 
         <TextView
             android:layout_width="wrap_content"

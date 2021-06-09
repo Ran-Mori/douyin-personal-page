@@ -1,13 +1,20 @@
 package zy.douyinpersonalpage.fragment
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import com.facebook.drawee.view.SimpleDraweeView
+import kotlinx.android.synthetic.main.fragment_top.*
 import zy.douyinpersonalpage.R
+import zy.douyinpersonalpage.activity.AvatarPreviewActivity
+import zy.douyinpersonalpage.constant.MyConstant
+import zy.douyinpersonalpage.singleton.MySingleTon
 import zy.douyinpersonalpage.viewmodel.TopFragmentViewModel
 import zy.douyinpersonalpage.viewmodel.factory.TopFragmentViewModelFactory
 
@@ -47,13 +54,27 @@ class TopFragment : Fragment() {
          * 使用观察者模式动态修改页面UI上的内容
          */
         viewModel.userProfile.observe(viewLifecycleOwner){
-//            nickNameTextView.text = it.nickName
-//            uidTextView.text = "抖音号:${it.uid}"
-//            signatureTextView.text = it.signature
-//            awemeCountTextView.text = "${it.awemeCount}获赞"
-//            followingCountTextView.text = "${it.followingCount}关注"
-//            followerCountTextView.text = "${it.followerCount}粉丝"
+            nickNameTextView.text = it.nickName
+            uidTextView.text = "抖音号:${it.uid}"
+            signatureTextView.text = it.signature
+            awemeCountTextView.text = "${MySingleTon.bigNumberConverter(it.awemeCount)}"
+            followingCountTextView.text = "${MySingleTon.bigNumberConverter(it.followingCount)}"
+            followerCountTextView.text = "${MySingleTon.bigNumberConverter(it.followerCount)}"
+
         }
+
+        /**
+         * 设置头像的URL和头像点击事件
+         */
+        view.findViewById<SimpleDraweeView>(R.id.avatarSimpleDraweeView).apply {
+            val uri = Uri.parse(MyConstant.AVATAR_URL)
+            setImageURI(uri,activity)
+            setOnClickListener {
+                val intent = Intent(activity,AvatarPreviewActivity::class.java)
+                activity?.startActivity(intent)
+            }
+        }
+
         return view
     }
 }

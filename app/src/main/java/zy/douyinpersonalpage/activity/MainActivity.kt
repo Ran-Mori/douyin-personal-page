@@ -1,9 +1,9 @@
-package zy.douyinpersonalpage
+package zy.douyinpersonalpage.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.viewpager2.widget.ViewPager2
 import kotlinx.android.synthetic.main.activity_main.*
+import zy.douyinpersonalpage.R
 import zy.douyinpersonalpage.adapter.MyViewPager2Adapter
 
 
@@ -35,16 +35,16 @@ class MainActivity : AppCompatActivity() {
          */
         viewPager2.setPageTransformer { page, position ->
             if (page.id == 2 && Math.abs(position) <= 0.5){
-                Log.d("MainActivity","2 - ${position}")
+                //Log.d("MainActivity","2 - ${position}")
                 yellowBarOne.background = resources.getDrawable(R.color.yellow,null)
                 yellowBarTwo.background = resources.getDrawable(R.color.background,null)
             }else if (page.id == 3 && Math.abs(position) <= 0.5){
-                Log.d("MainActivity","3 - ${position}")
+                //Log.d("MainActivity","3 - ${position}")
                 yellowBarOne.background = resources.getDrawable(R.color.background,null)
                 yellowBarTwo.background = resources.getDrawable(R.color.yellow,null)
                 yellowBarThree.background = resources.getDrawable(R.color.background,null)
             }else if (page.id == 4 && Math.abs(position) <= 0.5){
-                Log.d("MainActivity","4 - ${position}")
+                //Log.d("MainActivity","4 - ${position}")
                 yellowBarThree.background = resources.getDrawable(R.color.yellow,null)
                 yellowBarTwo.background = resources.getDrawable(R.color.background,null)
             }

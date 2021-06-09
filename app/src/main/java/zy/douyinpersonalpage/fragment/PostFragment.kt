@@ -2,6 +2,7 @@ package zy.douyinpersonalpage.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -63,6 +64,7 @@ class PostFragment : Fragment() {
         viewModel.videoList.observe(viewLifecycleOwner) {
             adapter.list = it
             adapter.notifyDataSetChanged()
+            Log.d("MainActivity","postcount = ${it.size}")
         }
 
         return view

@@ -3,13 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <!--视频图片-->
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/videoSimpleDraweeView"
         android:layout_width="124dp"
         android:layout_height="168dp"
-        android:background="@color/background"
-        android:scaleType="fitXY"/>
+        android:background="@color/background"/>
 
+    <!--点赞数爱心icon-->
     <ImageView
         android:layout_width="13.5dp"
         android:layout_height="12dp"
@@ -17,18 +18,16 @@
         android:layout_marginLeft="11dp"
         android:src="@drawable/heart_icon" />
 
-
-
-
+    <!--点赞数-->
     <TextView
         android:id="@+id/videoAwemeCountTextView"
         android:layout_width="wrap_content"
-        android:layout_height="12dp"
-        android:layout_marginTop="147.5dp"
-        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="145dp"
+        android:layout_marginLeft="26dp"
         android:text="21.7w"
-        android:textColor="@color/white"
+        android:textColor="#FFFFFF"
         android:gravity="center_vertical"
-        android:textSize="10sp" />
+        android:textSize="12sp" />
 
 </FrameLayout>

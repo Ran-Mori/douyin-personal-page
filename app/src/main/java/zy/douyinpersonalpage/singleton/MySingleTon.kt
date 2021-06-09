@@ -21,5 +21,19 @@ class MySingleTon {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//添加RXJava相关内容
             .build()
         fun getRetrofit() = retrofit
+
+
+        /**
+         * 对于大于10000的数据进行一个转换
+         */
+        fun bigNumberConverter(inputNumber:Long):String{
+            if (inputNumber < 10000){
+                return inputNumber.toString()
+            }else{
+                val leftNumber = inputNumber / 10000
+                val rightNumber = inputNumber / 1000 - leftNumber * 10
+                return "${leftNumber}.${rightNumber}w"
+            }
+        }
     }
 }
