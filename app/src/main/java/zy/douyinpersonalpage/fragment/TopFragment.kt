@@ -18,7 +18,6 @@ import zy.douyinpersonalpage.singleton.MySingleTon
 import zy.douyinpersonalpage.viewmodel.TopFragmentViewModel
 import zy.douyinpersonalpage.viewmodel.factory.TopFragmentViewModelFactory
 
-
 /**
  * 上部分UI，基本都是个人的信息
  */

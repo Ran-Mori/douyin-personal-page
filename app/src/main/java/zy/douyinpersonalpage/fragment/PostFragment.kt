@@ -10,14 +10,11 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import kotlinx.android.synthetic.main.fragment_post.*
-import kotlinx.android.synthetic.main.three_textview_button.*
 import zy.douyinpersonalpage.R
 import zy.douyinpersonalpage.adapter.VideoAdapter
 import zy.douyinpersonalpage.model.Video
 import zy.douyinpersonalpage.viewmodel.PostFragmentViewModel
 import zy.douyinpersonalpage.viewmodel.factory.PostFragmentViewModelFactory
-
 
 /**
  * 作品页面对应的代码逻辑

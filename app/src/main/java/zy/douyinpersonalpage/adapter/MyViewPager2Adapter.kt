@@ -1,12 +1,8 @@
 package zy.douyinpersonalpage.adapter
 
-import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
-import zy.douyinpersonalpage.R
 import zy.douyinpersonalpage.constant.MyConstant
 import zy.douyinpersonalpage.fragment.FavoriteFragment
 import zy.douyinpersonalpage.fragment.PostFragment
@@ -31,11 +27,10 @@ class MyViewPager2Adapter(activity: FragmentActivity) : FragmentStateAdapter(act
     /**
      * 根据位置不同来返回不同的Fragment
      */
-    override fun createFragment(position: Int): Fragment {
+    override fun createFragment(position: Int): Fragment  =
         when(position){
-            0 -> return postFragment
-            1 -> return privateFragment
-            else -> return favoriteFragment
+            0 -> postFragment
+            1 -> privateFragment
+            else -> favoriteFragment
         }
-    }
 }

@@ -1,11 +1,11 @@
 package zy.douyinpersonalpage.activity
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
 import kotlinx.android.synthetic.main.activity_main.*
 import zy.douyinpersonalpage.R
 import zy.douyinpersonalpage.adapter.MyViewPager2Adapter
-
 
 /**
  * 最重要的MainActivity
